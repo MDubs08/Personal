@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Personal.Models.UniversalModels.CardModel>
+
+@Styles.Render("~/Content/games")
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+<ul class="playing-cards clearfix">
+    @foreach (var card in Model)
+    {
+        <li class="playing-card">
+
+            <div class="face-up" id="@card.Value @card.Suit">
+                <div class="top-value">@card.Value</div>
+                <div class="suit-icon">
+                    <img src="@card.GetIcon()" />
+                </div>
+                <div class="bottom-value">@card.Value</div>
+            </div>
+
+            <div class="face-down"></div>
+        </li>
+    }
+</ul>

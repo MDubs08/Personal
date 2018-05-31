@@ -1,0 +1,25 @@
+﻿@model Personal.Models.UniversalModels.TableModel
+
+<div class="table-bg">
+    <div class="table-display">
+
+    </div>
+</div>
+
+<div class="table-buttons">
+    <button class="btn-raise" type="button" id="deal-cards">Deal</button>
+    <button class="btn-raise" type="button" id="bet-check">Check</button>
+    <button class="btn-raise" type="button" id="bet-raise">Raise</button>
+    <button class="btn-raise" type="button" id="bet-fold">Fold</button>
+    <br />
+    <button class="btn-raise" type="button" id="test-deal-cards">Test Deal</button>
+</div>
+
+<div class="players">
+    @foreach (var player in Model.Players)
+    {
+        @Html.Partial("Player", player)
+    }
+</div>
+
+<div class="test-cards"></div>

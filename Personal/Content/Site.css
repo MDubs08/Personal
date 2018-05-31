@@ -1,0 +1,241 @@
+﻿::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #bfb59e;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #019138;
+    border-radius: 15px;
+    transition: 0.25s;
+    -webkit-transition: 0.25s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #224c21;
+    transition: 0.25s;
+    -webkit-transition: 0.25s;
+}
+
+button:focus {
+    outline: none;
+}
+
+.btn-pulse,
+.btn-raise,
+.btn-wiggle {
+    background: transparent;
+    border-color: #019138;
+    transition: 0.25s;
+    -webkit-transition: 0.25s;
+}
+
+.btn-pulse:hover,
+.btn-pulse:focus {
+    animation: pulse 1s;
+    border-color: #224c21;
+    box-shadow: 0 0 0 2em rgba(255, 255, 255, 0);
+    color: #ffffff;
+    cursor: pointer;
+    -webkit-animation: pulse 1s;
+}
+
+.btn-raise:hover,
+.btn-raise:focus {
+    box-shadow: 0 0.5em 0.5em -0.4em #ffffff;
+    transform: translateY(-0.25em);
+    -webkit-transform: translateY(-0.25em);
+}
+
+.btn-wiggle:hover,
+.btn-wiggle:focus {
+    animation: wiggle 1s;
+    cursor: pointer;
+    -webkit-animation: wiggle 1s;
+}
+
+.btn-circle {
+    border-radius: 50%;
+}
+
+.radio-checkbox {
+    float: left;
+    margin-right: 4%;
+    margin-left: 4%;
+    width: 25%;
+}
+
+.radio-checkbox:last-child {
+    margin-right: 0;
+}
+
+.radio-label {
+    background: #224c21;
+    border-radius: .25em;
+    box-shadow: 2px 2px 0 1px rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    cursor: pointer;
+    display: block;
+    font-size: .8em;
+    letter-spacing: 1px;
+    margin-top: 10em;
+    padding: 1em 2.25em;
+    position: relative;
+    text-align: center;
+    text-shadow: 0 1px rgba(255, 255, 255, 0.1);
+    text-transform: uppercase;
+}
+
+.radio-label:before {
+    content: "";
+    height: 4em;
+    left: 0;
+    position: absolute;
+    top: -10em;
+    width: 100%;
+}
+
+.radio-label:after {
+    border-bottom: 5px solid transparent;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    content: "";
+    height: 0;
+    left: 0;
+    margin: 0 auto;
+    position: absolute;
+    right: 0;
+    top: -5px;
+    width: 0;
+}
+
+.radio-input {
+    display: none;
+}
+
+.radio-input + label:before {
+    color: #224c21;
+    content: "☐";
+    font-size: 4rem;
+    line-height: 0;
+    position: absolute;
+    top: -5rem;
+    transition: all .7s ease;
+    -webkit-transition: all .7s ease;
+}
+
+.radio-input:checked + label {
+    background: #019138;
+    box-shadow: 2px 2px 0 1px #224c21;
+    color: #ffffff;
+}
+
+.radio-input:checked + label:before {
+    animation: check .6s 1;
+    color: #019138;
+    content: "☑";
+    -webkit-animation: check .6s 1;
+}
+
+.radio-input:checked + label:after {
+    border-bottom-color: #224c21;
+}
+
+@keyframes check {
+    0% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+    45% {
+        -webkit-transform: scale(1.02);
+        transform: scale(1.02);
+    }
+    75% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 #224c21;
+    }
+}
+
+@keyframes wiggle {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(20deg);
+    }
+    50% {
+        transform: rotate(-15deg);
+    }
+    60% {
+        transform: rotate(15deg);
+    }
+    70% {
+        transform: rotate(-10deg);
+    }
+    80% {
+        transform: rotate(5deg);
+    }
+    90% {
+        transform: rotate(-5deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@-webkit-keyframes check {
+    0% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+    45% {
+        -webkit-transform: scale(1.02);
+        transform: scale(1.02);
+    }
+    75% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+@-webkit-keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 #224c21;
+    }
+}
+
+@-webkit-keyframes wiggle {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(20deg);
+    }
+    50% {
+        transform: rotate(-15deg);
+    }
+    60% {
+        transform: rotate(15deg);
+    }
+    70% {
+        transform: rotate(-10deg);
+    }
+    80% {
+        transform: rotate(5deg);
+    }
+    90% {
+        transform: rotate(-5deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}

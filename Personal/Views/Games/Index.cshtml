@@ -1,0 +1,223 @@
+﻿@model IEnumerable<Personal.Models.UniversalModels.TableModel>
+
+<div class="menu-bg">
+    <!-- Main Game Menu -->
+    <div class="menu-nav" id="game-menu">
+        <h1 class="menu-title">Game Time</h1>
+        <ul class="menu-options">
+            <li class="menu-option">
+                <button class="menu-button btn-pulse" id="menu-start" type="button">Start</button>
+            </li>
+            <li class="menu-option">
+                <button class="menu-button btn-pulse" id="menu-options" type="button">Options</button>
+            </li>
+            <li class="menu-option">
+                <button class="menu-button btn-pulse" id="menu-contact" type="button">Contact</button>
+            </li>
+            <li class="menu-option">
+                <button class="menu-button btn-pulse" id="menu-credits" type="button">Credits</button>
+            </li>
+        </ul>
+    </div>
+    <!-- Start Game Menu -->
+    <div class="menu-nav hide" id="game-menu-start">
+        <button class="btn-circle btn-pulse menu-back-button" id="back-button" type="button" onclick="showGameMenu(this)">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <h1 class="menu-title">Choose a table</h1>
+        <ul class="menu-options game-tables">
+            @foreach (var table in Model)
+            {
+                <li class="menu-option game-table" id="@table.Type">
+                    <table class="table-description text-center">
+                        <tbody>
+                            <tr>
+                                <td class="table-name" colspan="2">@table.Name</td>
+                            </tr>
+                            <tr>
+                                <td class="table-type">@table.Type</td>
+                            </tr>
+                            <tr>
+                                <td class="table-players">Players: <span>@table.Players.Count()</span> / @table.MaxPlayers</td>
+                                <td class="table-betlimit">@table.BetLimit</td>
+                            </tr>
+                            <tr>
+                                <td class="table-bet" id="small-blind">Small Blind: <span>@table.MinBet</span></td>
+                                <td class="table-bet" id="big-blind">Big Blind: <span>@table.MaxBet</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    @Html.ActionLink("Join", "Table", "Games", table, new { @class="btn-pulse button-join-table", @id="join-table" })
+                    @*<button class="btn-pulse button-join-table" id="join-table" type="button">Join</button>*@
+                </li>
+            }
+
+            @*<li class="menu-option game-table" id="pot-limit">
+                <table class="table-description text-center">
+                    <tbody>
+                        <tr>
+                            <td class="table-name" colspan="2">Table 2</td>
+                        </tr>
+                        <tr>
+                            <td class="table-players">Players: <span>3</span> / 6</td>
+                            <td class="table-type">Pot Limit</td>
+                        </tr>
+                        <tr>
+                            <td class="table-bet" id="small-blind">Small Blind: <span>5</span></td>
+                            <td class="table-bet" id="big-blind">Big Blind: <span>10</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="btn-pulse button-join-table" id="join-table" type="button">Join</button>
+            </li>
+            <li class="menu-option game-table" id="pot-limit">
+                <table class="table-description text-center">
+                    <tbody>
+                        <tr>
+                            <td class="table-name" colspan="2">Table 3</td>
+                        </tr>
+                        <tr>
+                            <td class="table-players">Players: <span>4</span> / 6</td>
+                            <td class="table-type">Pot Limit</td>
+                        </tr>
+                        <tr>
+                            <td class="table-bet" id="small-blind">Small Blind: <span>15</span></td>
+                            <td class="table-bet" id="big-blind">Big Blind: <span>30</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="btn-pulse button-join-table" id="join-table" type="button">Join</button>
+            </li>
+            <li class="menu-option game-table" id="no-limit">
+                <table class="table-description text-center">
+                    <tbody>
+                        <tr>
+                            <td class="table-name" colspan="2">Table 4</td>
+                        </tr>
+                        <tr>
+                            <td class="table-players">Players: <span>2</span> / 6</td>
+                            <td class="table-type">Pot Limit</td>
+                        </tr>
+                        <tr>
+                            <td class="table-bet" id="small-blind">Small Blind: <span>1</span></td>
+                            <td class="table-bet" id="big-blind">Big Blind: <span>2</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="btn-pulse button-join-table" id="join-table" type="button">Join</button>
+            </li>
+            <li class="menu-option game-table" id="no-limit">
+                <table class="table-description text-center">
+                    <tbody>
+                        <tr>
+                            <td class="table-name" colspan="2">Table 5</td>
+                        </tr>
+                        <tr>
+                            <td class="table-players">Players: <span>3</span> / 6</td>
+                            <td class="table-type">Pot Limit</td>
+                        </tr>
+                        <tr>
+                            <td class="table-bet" id="small-blind">Small Blind: <span>5</span></td>
+                            <td class="table-bet" id="big-blind">Big Blind: <span>10</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="btn-pulse button-join-table" id="join-table" type="button">Join</button>
+            </li>
+            <li class="menu-option game-table" id="no-limit">
+                <table class="table-description text-center">
+                    <tbody>
+                        <tr>
+                            <td class="table-name" colspan="2">Table 6</td>
+                        </tr>
+                        <tr>
+                            <td class="table-players">Players: <span>4</span> / 6</td>
+                            <td class="table-type">Pot Limit</td>
+                        </tr>
+                        <tr>
+                            <td class="table-bet" id="small-blind">Small Blind: <span>15</span></td>
+                            <td class="table-bet" id="big-blind">Big Blind: <span>30</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="btn-pulse button-join-table" id="join-table" type="button">Join</button>
+            </li>*@
+        </ul>
+    </div>
+    <!-- Options Menu -->
+    <div class="menu-nav hide" id="game-menu-options">
+        <button class="btn-circle btn-pulse menu-back-button" id="back-button" type="button" onclick="showGameMenu(this)">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <h1 class="menu-title">Options</h1>
+        <hr />
+        <h3 class="menu-text">Sound</h3>
+        <ul class="menu-options game-options">
+            <li id="music-sound">
+                <p class="menu-text">Background<br />Music</p>
+                <button class="btn-pulse btn-circle" id="sound" type="button" style="width:40px; height:40px;">
+                    <i class="fas fa-volume-up"></i>
+                </button>
+            </li>
+            <li id="game-sound">
+                <p class="menu-text">Game Sound<br />Effects</p>
+                <button class="btn-pulse btn-circle" id="sound" type="button" style="width:40px; height:40px;">
+                    <i class="fas fa-volume-up"></i>
+                </button>
+            </li>
+            <li id="microphone-sound">
+                <p class="menu-text">Microphone<br />Sound</p>
+                <button class="btn-pulse btn-circle" id="sound" type="button" style="width:40px; height:40px;">
+                    <i class="fas fa-microphone"></i>
+                </button>
+            </li>
+        </ul>
+        <hr />
+        <h3 class="menu-text">Difficulty</h3>
+        <form class="game-difficulty">
+            <div class="radio-checkbox">
+                <input id="easy" class="difficulty-option radio-input" type="radio" name="difficulty" />
+                <label for="easy" class="menu-text radio-label">Easy</label>
+            </div>
+            <div class="radio-checkbox" id="game-difficulty">
+                <input id="normal" class="difficulty-option radio-input" type="radio" name="difficulty" />
+                <label for="normal" class="menu-text radio-label">Normal</label>
+            </div>
+            <div class="radio-checkbox" id="game-difficulty">
+                <input id="hard" class="difficulty-option radio-input" type="radio" name="difficulty" />
+                <label for="hard" class="menu-text radio-label">Hard</label>
+            </div>
+        </form>
+    </div>
+    <!-- Contact Menu -->
+    <div class="menu-nav hide" id="game-menu-contact">
+        <button class="btn-circle btn-pulse menu-back-button" id="back-button" type="button" onclick="showGameMenu(this)">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <h1 class="menu-title">Contact</h1>
+        <h2 class="menu-text">Michael Wilson</h2>
+        <h3 class="menu-text">Web Applications Developer</h3>
+        <div class="contact-links">
+            <a href="mailto:mdubs08@gmail.com">
+                <i class="far fa-envelope btn-wiggle menu-text"></i>
+            </a>
+            <a href="tel:+14143030848">
+                <i class="fas fa-phone btn-wiggle menu-text"></i>
+            </a>
+            <a href="https://www.facebook.com/MDubs08">
+                <i class="fab fa-facebook-square btn-wiggle menu-text"></i>
+            </a>
+            <a href="https://www.linkedin.com/Wilsm9753">
+                <i class="fab fa-linkedin btn-wiggle menu-text"></i>
+            </a>
+        </div>
+            
+    </div>
+    <!-- Credits Menu -->
+    <div class="menu-nav hide" id="game-menu-credits">
+        <button class="btn-circle btn-pulse menu-back-button" id="back-button" type="button" onclick="showGameMenu(this)">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <h1 class="menu-title">Credits</h1>
+    </div>
+</div>
